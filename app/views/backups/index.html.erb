@@ -1,0 +1,3 @@
+<%= link_to 'Create Backup', backups_path, method: :post, class: 'button'  %> <br />
+<%= link_to 'Purge Backup', @last_backup, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' if @last_backup.present? %> <br />
+<%#= link_to 'Search', backups_path, method: 'post', class: 'button' %>

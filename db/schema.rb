@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_204335) do
+ActiveRecord::Schema.define(version: 2020_09_18_211351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,4 +21,19 @@ ActiveRecord::Schema.define(version: 2020_09_18_204335) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "backup_id", null: false
+    t.string "name"
+    t.string "image_url"
+    t.string "image_url_hires"
+    t.text "description"
+    t.integer "national_pokedex_number"
+    t.string "evolves_from"
+    t.integer "hp"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["backup_id"], name: "index_cards_on_backup_id"
+  end
+
+  add_foreign_key "cards", "backups"
 end
