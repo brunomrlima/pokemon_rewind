@@ -15,7 +15,9 @@ class Backup < ApplicationRecord
     json = self.raw_json
     json.values[0].each do |card|
       card['text'] ? text = card['text'].first : text = card['text']
+      rarity = Rarity.find_or_create_by!(name: card['rarity'])
       Card.find_or_create_by!(backup: self,
+                              rarity: rarity,
                               name: card['name'],
                               image_url: card['imageUrl'],
                               image_url_hires: card['imageUrlHiRes'],

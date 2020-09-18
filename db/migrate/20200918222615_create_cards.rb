@@ -2,6 +2,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
   def change
     create_table :cards do |t|
       t.references :backup,null: false, foreign_key: true, index: true
+      t.references :rarity,null: false, foreign_key: true, index: true
       t.string :name
       t.string :image_url
       t.string :image_url_hires

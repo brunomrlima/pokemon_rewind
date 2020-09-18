@@ -11,5 +11,9 @@ RSpec.describe Card, type: :model do
     context 'belongs_to' do
       it { should belong_to(:backup) }
     end
+
+    context 'has_many' do
+      it { should belong_to(:rarity) }
+    end
   end
 end

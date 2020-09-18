@@ -19,6 +19,6 @@ class BackupsController < ApplicationController
   
     def set_backup
       backup_id = params[:id]
-      @backup = Backup.find_by(backup_id)
+      @backup = Backup.find_by(id: backup_id)
     end
 end
