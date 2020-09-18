@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_211351) do
+ActiveRecord::Schema.define(version: 2020_09_18_222615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_211351) do
 
   create_table "cards", force: :cascade do |t|
     t.bigint "backup_id", null: false
+    t.bigint "rarity_id", null: false
     t.string "name"
     t.string "image_url"
     t.string "image_url_hires"
@@ -33,7 +34,15 @@ ActiveRecord::Schema.define(version: 2020_09_18_211351) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["backup_id"], name: "index_cards_on_backup_id"
+    t.index ["rarity_id"], name: "index_cards_on_rarity_id"
+  end
+
+  create_table "rarities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "cards", "backups"
+  add_foreign_key "cards", "rarities"
 end
