@@ -1,5 +1,7 @@
-<%= link_to 'Create Backup', backups_path, method: :post, class: 'button'  %> <br />
-<% if @last_backup.present? %>
-  <%= link_to 'Purge Backup', @last_backup, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %> <br />
-  <%= link_to 'Search', cards_path %>
-<% end %>
+<div class="text-center my-5">
+  <%= link_to '<button class="glow-on-hover" type="button"">Create Backup</button>'.html_safe, backups_path, method: :post %> <br /> <br />
+  <% if @last_backup.present? %>
+    <%= link_to '<button class="glow-on-hover" type="button"">Search</button>'.html_safe, cards_path %> <br /> <br />
+    <%= link_to 'Purge Backup', @last_backup, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> <br />
+  <% end %>
+</div>
