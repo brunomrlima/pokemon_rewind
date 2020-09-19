@@ -18,6 +18,9 @@
 
   <body>
     <%= render 'layouts/flash' %>
+    <div class="text-center">
+      <%= link_to image_tag(asset_path('logo.png'), class: 'logo'), root_path %>
+    </div>
     <%= yield %>
   </body>
 </html>
