@@ -1,28 +1,31 @@
 class CardsController < ApplicationController
-  before_action :set_rarities, :set_hps, :set_names
+  before_action :set_backup, :set_rarities, :set_hps, :set_names
 
   def index
-    last_backup = Backup.last
-    @cards ||= last_backup.cards
+    @cards ||= @last_backup.cards
   end
 
   def search
     parameters = search_params
-    @cards = Card.search(parameters)
+    @cards = Card.search(@last_backup, parameters)
   end
 
   private
+
+  def set_backup
+    @last_backup = Backup.last
+  end
 
   def set_rarities
     @rarities = Rarity.all
   end
 
   def set_hps
-    @hps = Card.pluck(:hp).uniq.reject{|v| v.nil?}
+    @hps = @last_backup.cards.order(:hp).pluck(:hp).uniq.reject{|v| v.nil?}
   end
 
   def set_names
-    @names = Card.order(:name).pluck(:name)
+    @names = @last_backup.cards.order(:name).pluck(:name)
   end
 
   def search_params
