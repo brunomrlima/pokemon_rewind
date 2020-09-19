@@ -16,9 +16,15 @@ Postgres version: 12
 3. When the Purge Backup button is pressed, your application will destroy your copy of the card information that was backed up.
 4. When the Search Backup button is pressed, your application will present the user with a way to search the backup of card information by name, hit point, or rarity. All cards that match the search criteria will be returned and presented to the user.
 
+## Instructions to build/compile/run
+You can access the application at https://pokemonrewind.herokuapp.com/, but if you want to build and run it:
+1. `git clone https://github.com/brunomrlima/pokemon_rewind.git`
+2. `bundle install`
+3. `rails db:create db:migrate`
+4. `rails s`
+5. Access http://localhost:3000 
 
-## Getting Started
-
+## How to install Requirements
 ### MacOS
 #### Homebrew
 Homebrew installs the stuff you need that Apple (or your Linux system) didn’t.
@@ -103,7 +109,7 @@ Access the website [PostgreSQL app](https://postgresapp.com/) and download Postg
 To setup the database:
 
 ```bash
-$ rake db:setup
+$ rails db:setup
 ```
 
 This will generate two local databases (one for development and another one for testing).
