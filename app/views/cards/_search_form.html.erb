@@ -1,0 +1,28 @@
+<div class="mx-auto my-5 pl-3 pr-3 row">
+  <div class="col-4">
+    <%= form_for :search, url: search_cards_path, method: :get, class: 'form-inline' do |f| %>
+      <div class="form-group">
+        <%= f.select(:name, @names , {prompt: "Name..."}, class: 'form-control') %>
+        <%= f.submit 'Search', class: 'btn btn-primary form-control' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-4">
+    <%= form_for :search, url: search_cards_path, method: :get do |f| %>
+      <div class="form-group">
+        <%= f.select(:rarity_id, @rarities.pluck(:name, :id) , {prompt: "Rarity..."}, class: 'form-control')  %>
+        <%= f.submit 'Search', class: 'btn btn-primary form-control' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-4">
+    <%= form_for :search, url: search_cards_path, method: :get do |f| %>
+      <div class="form-group">
+        <%= f.select(:hp, @hps , {prompt: "Hit Point..."}, class: 'form-control')  %>
+        <%= f.submit 'Search', class: 'btn btn-primary form-control' %>
+      </div>
+    <% end %>
+  </div>
+</div>
