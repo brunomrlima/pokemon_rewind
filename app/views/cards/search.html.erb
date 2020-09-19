@@ -1,0 +1,19 @@
+<%= form_for :search, url: search_cards_path, method: :get do |f| %>
+  <%= f.select(:name, @names , {prompt: "Name..."})  %>
+  <%= f.submit 'Search' %>
+<% end %>
+
+<%= form_for :search, url: search_cards_path, method: :get do |f| %>
+  <%= f.select(:rarity_id, @rarities.pluck(:name, :id) , {prompt: "Rarity..."})  %>
+  <%= f.submit 'Search' %>
+<% end %>
+
+<%= form_for :search, url: search_cards_path, method: :get do |f| %>
+  <%= f.select(:hp, @hps , {prompt: "Hit Point..."})  %>
+  <%= f.submit 'Search' %>
+<% end %>
+
+
+<% @cards.each do |card| %>
+  <%= image_tag card.image_url %>
+<% end %>
